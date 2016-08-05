@@ -27,7 +27,7 @@ def post_to_slack(json_str):
     with open('upload.json', 'w') as fh:
         fh.write(json_str)
         check_call([
-            'curl', '-X', 'POST', '--upload-file', 'upload.json', SLACK_URL])
+            'curl', '-fLsSv', '-X', 'POST', '--upload-file', 'upload.json', SLACK_URL])
     check_call(['rm', 'upload.json'])
 
 
