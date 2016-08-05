@@ -79,7 +79,7 @@ Status: {}
                 break
                 attachments.append(create_attachment(t['name'], t_fail_details))
         if len(attachments) > 0:
-            slack_payload['attachemnts'] = attachments
+            slack_payload['attachments'] = attachments
     post_to_slack(json.dumps(slack_payload))
 
 
