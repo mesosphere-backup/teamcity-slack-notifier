@@ -26,8 +26,8 @@ def get_json_from_tc(endpoint):
 def post_to_slack(json_str):
     with open('upload.json', 'w') as fh:
         fh.write(json_str)
-        check_call([
-            'curl', '-fLsSv', '-X', 'POST', '--upload-file', 'upload.json', SLACK_URL])
+    check_call([
+        'curl', '-fLsSv', '-X', 'POST', '--upload-file', 'upload.json', SLACK_URL])
     check_call(['rm', 'upload.json'])
 
 
