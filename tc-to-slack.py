@@ -19,7 +19,7 @@ THIS_BUILD_NUM = os.environ['THIS_BUILD_NUM']
 def get_json_from_tc(endpoint):
     return json.loads(check_output([
         'curl', '-fLsSv', '-H', 'accept: application/json',
-        '-u', ':'.join[TC_USER, TC_PW],
+        '-u', ':'.join([TC_USER, TC_PW]),
         urlparse(TC_URL+endpoint).geturl()]).decode())
 
 
