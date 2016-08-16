@@ -76,6 +76,8 @@ Status: {}
                     if t['currentlyMuted'] is True:
                         continue
                 t_fail_details = get_json_from_tc(t['href'])['details']
+                # get only the tail
+                t_fail_details = '\n'.join(t_fail_details.split('\n')[-5:])
                 attachments.append(create_attachment(t['name'], t_fail_details))
         if len(attachments) > 0:
             slack_payload['attachments'] = attachments
