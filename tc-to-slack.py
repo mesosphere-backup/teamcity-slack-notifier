@@ -31,14 +31,11 @@ def post_to_slack(json_str):
     check_call(['rm', 'upload.json'])
 
 
-def create_attachment(heading, test_data):
+def create_attachment(heading):
     return {
-            'fallback': test_data,
+            'fallback': heading,
             'color': 'danger',
-            'fields': [{
-                'title': heading,
-                'value': test_data,
-                'short': False}]
+            'title': heading
             }
 
 
@@ -75,10 +72,9 @@ Status: {}
                 if 'currentlyMuted' in t:
                     if t['currentlyMuted'] is True:
                         continue
-                t_fail_details = get_json_from_tc(t['href'])['details']
-                # get only the tail
-                t_fail_details = '\n'.join(t_fail_details.split('\n')[-5:])
-                attachments.append(create_attachment(t['name'], t_fail_details))
+                # log the details so we have some historical data
+                print(get_json_from_tc(t['href']))
+                attachments.append(create_attachment(t['name']))
         if len(attachments) > 0:
             slack_payload['attachments'] = attachments
     post_to_slack(json.dumps(slack_payload))
