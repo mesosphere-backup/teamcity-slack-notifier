@@ -67,6 +67,7 @@ Status: {}
     if 'testOccurrences' in trigger_json:
         attachments = []
         test_details = get_json_from_tc(trigger_json['testOccurrences']['href'])
+        print(test_details)
         for t in test_details['testOccurrence']:
             if t['status'].upper() != 'SUCCESS':
                 if 'currentlyMuted' in t:
