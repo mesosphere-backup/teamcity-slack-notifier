@@ -73,6 +73,9 @@ Status: {}
                 if 'currentlyMuted' in t:
                     if t['currentlyMuted'] is True:
                         continue
+                if 'ignored' in t:
+                    if t['ignored'] is True:
+                        continue
                 # log the details so we have some historical data
                 print(get_json_from_tc(t['href']))
                 attachments.append(create_attachment(t['name']))
